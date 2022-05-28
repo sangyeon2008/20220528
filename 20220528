@@ -1,0 +1,44 @@
+# 양의 정수 x가 하샤드 수이려면 x의 자릿수의 합으로 x가 나누어져야 합니다. 예를 들어
+# 18의 자릿수 합은 1+8=9이고, 18은 9로 나누어 떨어지므로 18은 하샤드 수입니다.
+# 자연수 x를 입력받아 x가 하샤드 수인지 아닌지 검사하는 함수, solution을 완성해주세요.
+#
+# #방법 1
+# def solution(num):
+#     #사용할 변수 만들기
+#     input_num_original=num#원래숫자
+#     input_num = input_num_original #계산에 사용할 숫자(복제)
+#     sum_num=0#각 자리수를 더한 숫자를 저장할 변수
+#
+#     #원리에 따라 계산
+#     while input_num !=0:
+#         sum_num += input_num%10
+#         input_num = input_num // 10
+#
+#     if input_num_original % sum_num == 0:
+#         return True
+#     else:
+#         return False
+#
+#
+# print(solution(int(input()))) #함수 실행(호출)
+#
+# #방법2
+# def solution(x):
+#     num = 0
+#     for i in str(x):
+#         print(i)
+#         num += int(i)
+#     return x % num ==0
+# print(solution(11))
+
+
+def solution(s,n):     #s는 문자열, n은 숫자
+    answer = ""
+    for i in s:
+        if i.isupper(): #대문자일때
+            answer += (chr((ord(i)-ord('A')+n)%26+ord('A')))
+        elif i.islower(): #소문자일 때
+            answer += chr((ord(i)-ord('a')+n)%26+ord('a'))
+        elif i==' ':
+            answer += i
+    return answer
